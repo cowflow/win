@@ -1,0 +1,43 @@
+<div class="page-content">
+</div>
+
+<script type="text/javascript">
+    $(function (){
+
+        initIndex();
+        touch(initIndex);
+
+        function initIndex()
+        {
+            jsonp("status/index.php",function(data){
+                $('.page-content').highcharts({
+                    chart: {type: 'column'},
+                    title: {text: $.t("index.runStatus")},
+                    subtitle: {text: ''},
+                    xAxis: {type: 'category',labels: {rotation: -45,style: {fontSize: '13px',fontFamily: 'Verdana, sans-serif'}}},
+                    yAxis: {min: 0,title: {text: $.t("message.credit")}},
+                    legend: {enabled: false},
+                    tooltip: {pointFormat: $.t("index.pointFormat")},
+                    series: [{
+                        name: 'Population',
+                        data: data,
+                        dataLabels: {
+                            enabled: true,
+                            rotation: -90,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            x: 4,
+                            y: 10,
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif',
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    }]
+                });
+                removeHightcharts();
+            });
+        }
+    });
+</script>

@@ -1,0 +1,243 @@
+<div class="page-content" >
+  <div class="row">
+
+
+    <div class="col-xs-12" style="height:390px">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="center"><input type="checkbox" class="ace par"><span class="lbl"></span></th>
+            <!-- <th data-i18n="task.platform"></th> -->
+            <!-- <th data-i18n="task.logicName"></th> -->
+            <th data-i18n="task.targetContent"></th>
+            <th data-i18n="task.credit"></th>
+            <th data-i18n="task.targetNum"></th>
+            <th data-i18n="task.currentNum"></th>
+            <th data-i18n="task.status"></th>
+          </tr>
+        </thead>
+        <tbody id="table">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="dataTables_info" id="dynamic-table_info" role="status" aria-live="polite">
+
+        <button data-i18n="[title]operation.add" class="btn btn-white btn-primary btn-bold" onclick="buttonAdd();">
+          <span><i class="ace-icon fa fa-plus-circle bigger-120 primary"></i></span>
+        </button>
+
+        <button data-i18n="[title]operation.edit" class="btn btn-white btn-purple btn-bold" onclick="buttonEdit();">
+          <span><i class="ace-icon fa fa-edit bigger-120 purple"></i></span>
+        </button>
+
+        <button data-i18n="[title]operation.delete" class="btn btn-white btn-warning btn-bold" onclick="buttonRemove();">
+          <span><i class="ace-icon fa fa-trash-o bigger-120 warning"></i></span>
+        </button>
+
+      </div>
+    </div>
+
+
+    <div class="col-xs-6">
+      <div class="dataTables_paginate paging_simple_numbers" id="tablePage">
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<textarea id="templateTable" style="display:none">
+
+  {{#empty}}
+  <tr>
+    <td align="center" colspan="7" data-i18n="message.emptyRecord"></td>
+  </tr>
+  {{/empty}}
+
+  {{#data}}
+  <tr>
+    <td class="center"><input value="{{task_id}}" type="checkbox" class="ace sub"><span class="lbl"></span></td>
+    <td>{{platform}}:{{task_logic_name}}
+      <a href="javascript:void(0);" class="blue" title="{{task_target_description}}"><i class="ace-icon fa fa-search bigger-10 yellow"></i></a>
+    </td>
+    <td>{{task_credit}}</td>
+    <td>{{task_target_num}}</td>
+    <td>{{task_current_num}}</td>
+    <!-- <td>{{task_start_time_format}}</td> -->
+    <td>{{task_status}}</td>
+  </tr>
+  {{/data}}
+
+</textarea>
+
+<script type="text/javascript">
+
+      loadTable();
+
+      function loadTable(page)
+      {
+          nowPage = page ? page : nowPage;
+          jsonm("task/index.php" + nowPage,"#templateTable","#table");
+      }
+
+      function buttonAdd()
+      {
+          pbox("task_add");
+      }
+
+      function buttonEdit()
+      {
+          if (!checkMID()) {
+              return;
+          }
+          pbox("task_edit");
+      }
+
+      function buttonSearch()
+      {
+          pbox("task_search");
+      }
+
+      function buttonRemove()
+      {
+          if (!checkMID()) {
+              return;
+          }
+          mconfirm(t("message.remove"),function(){
+              jsonp("task/remove.php?id="+mIDBox,function(data){
+                  mbox(data.msg);
+                  loadTable();
+              });
+          });
+      }
+</script>
+
+
+
+<!-- <div class="page-content"> -->
+<!--     <div class="row"> -->
+<!--     <div class="col-xs-12"> -->
+<!--         <table id="grid-table"></table> -->
+<!--         <div id="grid-pager"></div> -->
+
+<!--         <script type="text/javascript"> -->
+<!--             var $path_base = "..";//this will be used for editurl parameter -->
+<!--         </script> -->
+
+<!--     </div> -->
+<!--     </div> -->
+<!-- </div> -->
+
+<!-- <script type="text/javascript"> -->
+
+<!-- var colNameArray = [ -->
+<!--     /*"操作",*/ -->
+<!--     $.t("task.ID"), -->
+<!--     $.t("task.platform"), -->
+<!--     $.t("task.logicName"), -->
+<!--     $.t("task.credit"), -->
+<!--     $.t("task.targetNum"), -->
+<!--     $.t("task.currentNum"), -->
+<!--     $.t("task.startTime")/*, -->
+<!--     $.t("task.touch_time"), -->
+<!--     $.t("task.complete_time")*/ -->
+<!-- ]; -->
+<!-- var colModelArray = [ -->
+<!--     /*{name:'action',width:80,fixed:true, sortable:false, editable: false,formatter:'actions'},*/ -->
+<!--     {name:'task_id',index:'task_id', sortable:false, editable: false,hidden:true}, -->
+<!--     {name:'platform',index:'platform',sortable:false, editable: false}, -->
+<!--     {name:'task_logic_name',index:'task_logic_name',sortable:false, editable:false}, -->
+<!--     {name:'task_credit',index:'task_credit',sortable:false, editable:false}, -->
+<!--     {name:'task_target_num',index:'task_target_num',sortable:false, editable: true}, -->
+<!--     {name:'task_current_num',index:'task_current_num',sortable:false, editable: false}, -->
+<!--     {name:'task_start_time_format',index:'task_start_time_format',sortable:false, editable: false}/*, -->
+<!--     {name:'task_touch_time_format',index:'task_touch_time_format',sortable:false, editable: false}, -->
+<!--     {name:'task_complete_time_format',index:'task_complete_time_format',sortable:false, editable: false}*/ -->
+<!-- ]; -->
+
+<!-- createJqGrid($.t("task.myTask"),mServerUrl + "task/publish_list.php",colNameArray,colModelArray); -->
+
+<!-- jQuery(grid_selector) -->
+<!--         .navButtonAdd(pager_selector, { -->
+<!--             title: $.t("operation.add"), -->
+<!--             caption: "", -->
+<!--             buttonicon: "ui-icon ace-icon fa fa-plus-circle purple", -->
+<!--             onClickButton: function () { -->
+<!--                 pbox("task_add"); -->
+<!--             }, -->
+<!--             position: "last" -->
+<!--         }).navButtonAdd(pager_selector,{ -->
+<!--             title:$.t("operation.edit"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-edit purple", -->
+<!--             onClickButton: function(){ -->
+<!--                 var row_index = getSelected(); -->
+<!--                 if(row_index) -->
+<!--                     row_index=row_index[row_index.length-1]; -->
+
+<!--                 var col_index=2; -->
+<!--                 var id = $(grid_selector).jqGrid('getCell',row_index,col_index); -->
+<!--                 if( id ) { -->
+<!--                     mParam.id=id; -->
+<!--                     pbox("task_edit"); -->
+<!--                 } -->
+<!--                 else alert($.t("operation.pleaseSelectRow")); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         }).navButtonAdd(pager_selector,{ -->
+<!--             title:$.t("operation.delete"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-minus-circle red", -->
+<!--             onClickButton: function(){ -->
+<!--                 var row_index = getSelected(); -->
+<!--                 if(row_index) -->
+<!--                     row_index=row_index[row_index.length-1]; -->
+
+<!--                 var col_index=2; -->
+<!--                 var id = $(grid_selector).jqGrid('getCell',row_index,col_index); -->
+<!--                 if( id ) { -->
+<!--                     if(confirm($.t("operation.sureToDelete"))) -->
+<!--                     { -->
+<!--                         jsonp("task/del.php?id=" + id, function (data) { -->
+<!--                             $(grid_selector).trigger("reloadGrid"); -->
+<!--                             mbox(data.msg); -->
+<!--                         }); -->
+<!--                     } -->
+<!--                 } -->
+<!--                 else alert($.t("operation.pleaseSelectRow")); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         }).navButtonAdd(pager_selector, { -->
+<!--             title: $.t("operation.search"), -->
+<!--             caption: "", -->
+<!--             buttonicon: "ui-icon ace-icon fa fa-search orange", -->
+<!--             onClickButton: function () { -->
+<!--                 pbox("task_search"); -->
+<!--             }, -->
+<!--             position: "last" -->
+<!--         }).navButtonAdd(pager_selector, { -->
+<!--             title: $.t("operation.refresh"), -->
+<!--             caption: "", -->
+<!--             buttonicon: "ui-icon ace-icon fa fa-refresh green", -->
+<!--             onClickButton: function () { -->
+<!--                 $(grid_selector).trigger("reloadGrid"); -->
+<!--             }, -->
+<!--             position: "last" -->
+<!--         }); -->
+
+
+
+<!-- //.navButtonAdd(pager_selector,{ -->
+<!-- //    title:"删除", -->
+<!-- //    caption:"", -->
+<!-- //    buttonicon:"ui-icon ace-icon fa fa-trash-o black", -->
+<!-- //    onClickButton: function(){ -->
+<!-- //        alert("Deleting Row"); -->
+<!-- //    }, -->
+<!-- //    position:"last" -->
+<!-- //}) -->
+
+<!-- </script> -->

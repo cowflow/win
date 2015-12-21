@@ -1,0 +1,23 @@
+<div class="page-content" id="page_content">
+</div>
+
+<script type="text/javascript">
+
+  displayCode();
+
+  function displayCode()
+  {
+      var codeFile = getCodeFile();
+
+      var display = "";
+
+      $.each(codeFile,function(file){
+          var data = readCodeType(file);
+          if(data.id){
+              display += "<button onclick=\"mCodeName='" + file + "';pbox('code_" + data.type + "');\">类别:" + data.type + " 用户:" + data.id + "</button><br>";
+          }
+      });
+
+      $("#page_content").html(display);
+  }
+</script>

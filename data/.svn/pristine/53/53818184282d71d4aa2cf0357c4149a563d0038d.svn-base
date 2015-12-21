@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-xs-12">
+
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="" data-i18n="template.groupContent"></label>
+
+            <div class="col-sm-9">
+              <input id="content" name="content" class="input" type="text" value="">
+            </div>
+        </div>
+
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-6">
+                <button class="btn btn-info" type="button" onclick="templateGroupAdd();">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    <span data-i18n="operation.save"></span>
+                </button>
+
+            </div>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+  function buttonSubmit()
+  {
+      templateGroupAdd();
+  }
+
+  function templateGroupAdd()
+  {
+      var content = $("#content").val();
+
+      var param = ""
+      param += "content=" + content;
+
+      var url = "template/group_add.php";
+      url += "?" + param;
+
+      jsonp(url,function (data) {
+          mbox(data.msg);
+          hidePbox();
+          loadTable();
+      });
+  }
+</script>

@@ -1,0 +1,235 @@
+{
+    "app": {
+        "name": "Cowflow"
+    },
+    "message": {
+        "tip": "Tip.",
+        "credit": "Credit.",
+        "networkError": "Network error, try again later.",
+        "templateError": "Template error, please download the latest version.",
+        "saveDone": "Success！",
+        "remove": "Delete?",
+        "emptyRecord": "Empty record~"
+    },
+    "main": {
+        "welcome": "Welcome!",
+        "anonymous": "Anonymous.",
+        "newbie": "Please register as soon as possible to avoid data loss！"
+    },
+    "menu": {
+        "index": "Dashboard",
+        "task": "My task",
+        "template": "Template",
+        "templateTemplate": "Template",
+        "templateGroup": "Template Group",
+        "account": "Account",
+        "user": "User",
+        "userMessage": "User message",
+        "userEdit": "User edit",
+        "userInfo": "User info",
+        "userPassword": "Change password",
+        "userLogin": "User login",
+        "userRegister": "User register",
+        "setting": "Setting",
+        "help": "Help"
+    },
+
+    "operation":
+    {
+        "add":"Add",
+        "edit":"Edit",
+        "update":"Update",
+        "save":"Save",
+        "delete":"Delete",
+        "search":"Search",
+        "submit":"Submit",
+        "pleaseSelectRow":"Please select row.",
+        "noChange":"No change.",
+        "sureToDelete":"Sure to delete?",
+        "refresh":"Refresh.",
+        "search":"Search",
+        "prev":"Prev",
+        "next":"Next",
+        "default":"Default"
+    },
+    "nav": {
+        "home": "Home.",
+        "page1": "Page One",
+        "page2": "Page Two"
+    },
+    "index": {
+        "currentCredit" : "Current credit",
+        "userGroup" : "User group",
+        "userLevel" : "User level",
+        "serverTimes" : "Server response",
+        "successTimes" : "Task success",
+        "failedTimes" : "Task failed",
+        "currentCredit" : "Current credit",
+        "runStatus": "Run status.",
+        "pointFormat": "<b>Point format.:{point.y:.1f}</b>"
+    },
+    "task": {
+        "myTask": "My task.",
+        "ID": "ID",
+        "platform":"Platform",
+        "logicName": "Logic Name",
+        "logicFunc": "Logic Function",
+        "target":"Target",
+        "targetContent":"Target Content",
+        "credit":"Credit",
+        "targetNum": "Target Number",
+        "currentNum":"Current Number",
+        "startTime":"Srart Time",
+        "touchTime":"Touch Time",
+        "completeTime":"Complete Time",
+        "status":"Status"
+    },
+    "taskAdd":{
+        "title":"Add task",
+        "editTitle":"Edit task",
+        "platform":"Platform",
+        "taskName": "Task Name",
+        "pleaseSelect": "Please select...",
+        "taskCredit":"Task Credit",
+        "taskCreditInput":"Input task credit",
+        "taskTargetNum":"Task target numger",
+        "taskTargetNumInput":"Input task target number.",
+        "taskTarget":"Configuration parameter",
+        "hoursLimit":"Hours limit",
+        "hoursLimit0":"Hours limit 0",
+        "hoursLimit1":" Hours limit 1",
+        "hoursLimit2":" Hours limit 2",
+        "hoursLimit3":" Hours limit 3",
+        "hoursLimit4":" Hours limit 4",
+        "hoursLimit5":" Hours limit 5",
+        "hoursLimit6":" Hours limit 6",
+        "hoursLimit7":" Hours limit 7",
+        "hoursLimit8":" Hours limit 8",
+        "hoursLimit9":" Hours limit 9",
+        "hoursLimit10":" Hours limit 10",
+        "hoursLimit11":" Hours limit 11",
+        "hoursLimit12":" Hours limit 12",
+        "hoursLimit13":" Hours limit 13",
+        "hoursLimit14":" Hours limit 14",
+        "hoursLimit15":" Hours limit 15",
+        "hoursLimit16":" Hours limit 16",
+        "hoursLimit17":" Hours limit 17",
+        "hoursLimit18":" Hours limit 18",
+        "hoursLimit19":" Hours limit 19",
+        "hoursLimit20":" Hours limit 20",
+        "hoursLimit21":" Hours limit 21",
+        "hoursLimit22":" Hours limit 22",
+        "hoursLimit23":" Hours limit 23",
+        "pleaseSelectWebsite":"Please select task website.",
+        "logicDataEmpty":"Logic data is empty，please contact administrator.",
+        "pleaseSelectLogic":"Please select logic.",
+        "minCreditLimit":"Minimal credit limit",
+        "minTargetNumLimit":"Minimal target number limit."
+    },
+    "taskSearch":{
+        "title":"Search condition"
+    },
+
+    "account": {
+        "myAccount": "My account",
+        "ID": "ID",
+        "accountName": "Account Name",
+        "accountPassword": "Account password",
+        "platform": "Platform",
+        "credit": "Credit today",
+        "status": "Status"
+    },
+    "accountAdd":{
+        "status":"Status",
+        "platform":"Platform",
+        "username":"Username",
+        "password":"Password",
+        "usernameInput":"Please input username.",
+        "passwordInput":"Please input password.",
+        "isBatchInsert":"Is batch insert?",
+        "batchInsert":"Batch insert"
+    },
+    "userLogin":{
+        "username":"E-mail：",
+        "password":"Password：",
+        "password2":"Repeat password：",
+        "password2Input":"Please repeat the password.",
+        "password2IsError":"The repeated password is error.",
+        "usernameInput":"Please input E-mail.",
+        "passwordInput":"Please input password.",
+        "submit":"Submit",
+        "register":"Register",
+        "loginDone":"Login success！",
+        "userCodeError":"User code is error."
+    },
+    "userPassword":{
+        "newPasswordEmpty":"New password is empty.",
+        "newPasswordError":"New password is error, please reinput.",
+        "oldPassword":"Old password：",
+        "newPassword1":"New password：",
+        "newPassword2":"Repeat new password：",
+        "oldPasswordInput":"Please input the old password.",
+        "newPassword1Input":"Please input the new password.",
+        "newPassword2Input":"Please repeat the new password."
+    },
+
+    "userEdit":{
+        "secret":"Secret",
+        "email":"E-mail：",
+        "emailInput":"",
+        "nickname":"Nickname：",
+        "nicknameInput":"Please input nickname",
+        "sex":"Sex：",
+        "sexSecret":"Sex secret",
+        "male":"Male",
+        "female":"Female",
+        "mobile":"Mobile：",
+        "mobileInput":"Please input mobile",
+        "im":"IM：",
+        "imInput":"Please input IM number"
+    },
+
+
+    "setting":{
+        "setLanguage":"Set language：",
+        "en":"English",
+        "zh":"Chinese",
+        "openStart":"Open at start up：",
+        "openFailed":"Open at start up！Registry can not be modified or operating system does not support.",
+        "useCode":"Use code："
+    },
+
+    "template":{
+        "new":"New template",
+        "group":"Template group ID",
+        "content":"Template content",
+        "remove":"Remove template",
+        "newGroup":"Add new template group",
+        "groupContent":"Group content",
+        "groupName":"Group name"
+    },
+
+    "help":{
+        "common":"Common",
+        "account":"Account",
+        "pay":"Pay",
+        "commonQuestion":"Common question",
+        "accountQuestion":"Account question",
+        "payQuestion":"Pay question",
+
+        "whatIsAnonymous":"What is anonymous？",
+        "whatIsAnonymousAnswer":"It will be an anonymous when first open the software, at this time,account data will be saved temporarily. You should register if you want to save your account and credit. Please click on the left menu 'User Center - User Registration.'",
+
+        "whatIsCode":"What is code？",
+        "whatIsCodeAnswer":"Whenever there is an account register on the major platform, it will pop-up the input window if ther is a need to input the identifying code. If you don't finish inputing in a limited time, it will lead to the account can not finish task.",
+
+        "accountCanNotLogin":"Account can not login?",
+        "accountCanNotLoginAnswer":"When the account unable to log on,please click on the right menu 'User Center - User Login' to log on with manual input. If it still unable to log on, please try to request your password.",
+
+        "accountBatchInsert":"How to batch insert account?",
+        "accountBatchInsertAnswer":"One line represents an account, you can use the following symbols to separate the account and password. Account - Password. Account | Password. Account : Password. It also support repearability, such as Account --- Password. Account ||| Password. Account ::: Password. So, if there are some symbols like - | : in your password, it may lead to the failure of login. ",
+
+        "payDone":"Pay done.",
+        "payDoneAnswer":"When the payment is successful, there will be little delays from the payment platform to this platform, please check the credit after few minutes. If it has no respond more than half an hour, please contanct the customer."
+    }
+}

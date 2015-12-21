@@ -1,0 +1,376 @@
+<div class="row" id="test-content">
+    <div class="col-xs-12">
+        <label class="col-sm-12 control-label no-padding-right"  data-i18n="taskSearch.title"></label>
+        <form class="form-horizontal" role="form" class="task">
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="website" data-i18n="taskAdd.platform"></label>
+
+                <div class="col-sm-9">
+                    <select id="website" class="col-xs-10 col-sm-5">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="logic" data-i18n="taskAdd.task_name"></label>
+
+                <div class="col-sm-9">
+                    <select id="logic" class="col-xs-10 col-sm-5">
+                    </select>
+                </div>
+            </div>
+
+            <!-- <div class="form-group"> -->
+            <!--     <label class="col-sm-3 control-label no-padding-right" data-i18n="taskAdd.task_credit"></label> -->
+
+            <!--     <div class="col-sm-9"> -->
+            <!--         <div class="col-sm-12 task_credit"> -->
+            <!--             <input class="col-sm-2 min" type="number" id="task_credit_min" min="1" max="9998" name="task_credit_min" value="1" > -->
+            <!--             <div class="col-sm-1" ></div> -->
+            <!--             <div class="col-sm-6"  id="task_credit" ></div> -->
+            <!--             <div class="col-sm-1" ></div> -->
+            <!--             <input class="col-sm-2 max" type="number" id="task_credit_max" min="2" max="9999" name="task_credit_max" value="9999" > -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="form-group"> -->
+            <!--     <label class="col-sm-3 control-label no-padding-right" data-i18n="taskAdd.task_target_num"></label> -->
+
+            <!--     <div class="col-sm-9"> -->
+            <!--         <div class="col-sm-12 task_target_num"> -->
+            <!--             <input class="col-sm-2 min" type="number" id="task_target_num_min" min="1" max="9998" name="task_credit_min" value="1" > -->
+            <!--             <div class="col-sm-1" ></div> -->
+            <!--             <div class="col-sm-6"  id="task_target_num" ></div> -->
+            <!--             <div class="col-sm-1" ></div> -->
+            <!--             <input class="col-sm-2 max" type="number" id="task_target_num_max" min="2" max="9999" name="task_credit_max" value="9999" > -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!-- </div> -->
+
+<!--            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" data-i18n="taskAdd.hours_limit"></label>
+
+                <div class="col-sm-9">
+                    <label>
+                        <input id="hours_limit" name="hours_limit" class="ace ace-switch ace-switch-7" type="checkbox">
+                        <span class="lbl"></span>
+                    </label>
+                </div>
+            </div>-->
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-6">
+                    <button class="btn btn-info" type="button" onclick="searchTask();">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        <span data-i18n="operation.search"></span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $("#task_credit,#task_target_num").slider({
+        range: true,
+        min: 1,
+        max: 9999,
+        values: [ 1, 9999 ],
+        slide: function( event, ui ) {
+            var index=$(ui.handle).index()-1;
+            var val = ui.values[index] + "";
+            if(index==0)
+            {
+                $(ui.handle).parent().parent().find(".min").val(val);
+            }
+            else
+                $(ui.handle).parent().parent().find(".max").val(val);
+
+            if( !ui.handle.firstChild ) {
+                $("<div class='tooltip right in' style='display:none;left:16px;top:-6px;'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>")
+                        .prependTo(ui.handle);
+            }
+            $(ui.handle.firstChild).show().children().eq(1).text(val);
+        }
+    })
+            .find('span.ui-slider-handle')
+            .on('blur', function(){
+        $(this.firstChild).hide();
+    });
+
+    $("#task_credit_min,#task_credit_max").change(function(){
+        var min=parseInt($(this).attr("min"));
+        var max=parseInt($(this).attr("max"));
+        var val=parseInt($(this).val());
+
+        if(val<=min)
+            $(this).val(min);
+
+        if(val>=max)
+            $(this).val(max);
+
+        if($("#task_credit_min").val()>=$("#task_credit_max").val()) {
+            var min_val=$("#task_credit_max").val() - 1;
+            if(min_val<=1) min_val=1;
+            $("#task_credit_min").val(min_val);
+        }
+        $("#task_credit").slider("values",[$("#task_credit_min").val(),$("#task_credit_max").val()]);
+    });
+
+    $("#task_target_num_min,#task_target_num_max").change(function(){
+        var min=parseInt($(this).attr("min"));
+        var max=parseInt($(this).attr("max"));
+        var val=parseInt($(this).val());
+
+        if(val<min)
+            $(this).val(min);
+
+        if(val>max)
+            $(this).val(max);
+
+        if($("#task_target_num_min").val()>=$("#task_target_num_max").val())
+        {
+            var min_val=$("#task_target_num_max").val() - 1;
+            if(min_val<=1) min_val=1;
+            $("#task_target_num_min").val(min_val);
+        }
+
+        $("#task_target_num").slider("values",[$("#task_target_num_min").val(),$("#task_target_num_max").val()]);
+    });
+
+    $("#hours_limit").on("change",function(){
+        var $this=$("#hours_limit");
+        if(!$this.attr("checked"))
+        {
+            $this.attr("checked","checked");
+        }
+        else
+        {
+            $this.removeAttr("checked");
+        }
+    });
+
+    $("#logic").attr("disabled","disabled");
+
+    jsonp("website/ls.php", function (data) {
+        $("#website").unbind("change");
+        var option = $("<option>").val("").text("请选择...");
+        $('#website').append(option);
+        $.each(data, function (i, item) {
+            option = $("<option>").val(item["website_id"]).text(item["website_name"]);
+            $('#website').append(option);
+        });
+        $("#website").bind("change",function(){
+            $("#logic").removeAttr("disabled");
+            loadLogic($(this).val());});
+    });
+
+    function loadLogic(website) {
+        if(website) {
+            $("#logic").empty();
+            jsonp("task/logic.php?website=" + website, function (logic_data) {
+                var tmp_logic_data = logic_data["rows"];
+                var option = $("<option>").val("").text("请选择...");
+                $('#logic').append(option);
+                $.each(tmp_logic_data, function (i, item) {
+                    option = $("<option>").val(item["logic_id"]).text(item["logic_name"]);
+                    $("#logic").append(option);
+                });
+            });
+        }
+    }
+
+    function searchTask() {
+
+        if($("#website").val().length<=0)
+        {
+            mbox($.t("taskAdd.please_select_website"));
+            return false;
+        }
+        if($("#logic").val().length<=0)
+        {
+            mbox($.t("taskAdd.please_select_logic"));
+            return false;
+        }
+        var website = $("#website").val();
+        var logic = $("#logic").val();
+        var task_credit_min = $("#task_credit_min").val();
+        var task_credit_max = $("#task_credit_max").val();
+        var task_target_num_min = $("#task_target_num_min").val();
+        var task_target_num_max = $("#task_target_num_max").val();
+        var hours_limit=$("#hours_limit:checked").length>0?1:0;
+
+        var param ={};
+        param.website=website;
+        param.logic=logic;
+        param.task_credit_min=task_credit_min;
+        param.task_credit_max=task_credit_max;
+        param.task_target_num_min=task_target_num_min;
+        param.task_target_num_max=task_target_num_max;
+        //param.hours_limit=hours_limit;
+
+
+        $(grid_selector).jqGrid("setGridParam", { "postData":param}).trigger("reloadGrid");
+        hidePbox();
+
+    };
+
+
+/*    $(function(){
+        $(".hours_limit").hide();
+        $("#hours_limit").on("change",function(){
+            var $this=$("#hours_limit");
+            if(!($("#task_target_num").val()>0))
+            {
+                $this.removeAttr("checked");
+                $(".hours_limit").hide();
+                return ;
+            }
+            if(!$this.attr("checked"))
+            {
+                $this.attr("checked","checked");
+                $(".hours_limit").show();
+            }
+            else
+            {
+                $this.removeAttr("checked");
+                $(".hours_limit").hide();
+            }
+        });
+        $("#task_target_num").on("change",function(){
+            var $this=$(this);
+            if(!($this.val()>0))
+            {
+                $this.removeAttr("checked");
+                $(".hours_limit").hide();
+                return ;
+            }
+            /!*            $('.input-size-slider').each(function(i,item){
+             $(item).slider('max', $this.val());
+             if($(item).slider('value')>$this.val())
+             $(item).slider('value',$this.val());
+             });*!/
+            $(".input-size-slider").slider({
+                max: $this.val()
+            });
+        });
+        $(".input-size-slider").slider({
+            value:1,
+            range: "min",
+            min: 1,
+            max: 100,
+            step: 1,
+            slide: function( event, ui ) {
+                var $this=$(this);
+                var val = parseInt(ui.value);
+                $this.parent().find("input[type=number]").val(val);
+            }
+        });
+    });
+
+    var tmp_logic_data = [];
+    var tmp_logic_index=null;
+
+
+    $("body").delegate("#logic","change", function () {
+        var $this=$(this);
+        $(tmp_logic_data).each(function(i,item){
+            if(item["logic_id"]==$this.val())
+            {
+                tmp_logic_index=i;
+                $("#task_target").html("");
+                $(item["logic_param"]).each(function(i,param){
+
+                    if(param.custom.toLowerCase()=="true") {
+                        var tmp_html = '<div class="col-sm-12">' +
+                                '<div class="col-sm-2 ">' + param.text +
+                                ':</div>' +
+                                '<div class="col-sm-10">' +
+                                '<input type="text" name="' + param.key + '" value="' + param.value + '" />' +
+                                '</div>' +
+                                '</div>';
+                        $("#task_target").append(tmp_html);
+                    }
+                });
+
+                $("#task_credit").val(item["logic_credit"]);
+                $("#task_target_num").val(item["logic_param"]);
+                return ;
+            }
+        });
+
+    });
+
+
+
+    function addTask() {
+
+        if($("#website").val().length<=0)
+        {
+            mbox($.t("taskAdd.please_select_website"));
+            return false;
+        }
+        else if(tmp_logic_data.length<=0)
+        {
+            mbox($.t("taskAdd.logic_data_empty"));
+            return false;
+        }
+        else if($("#logic").val().length<=0)
+        {
+            mbox($.t("taskAdd.please_select_logic"));
+            return false;
+        }
+        var logic = tmp_logic_data[tmp_logic_index];
+        if(isNaN(parseInt($("#task_credit").val()))||parseInt($("#task_credit").val())<parseInt(logic["logic_credit"]))
+        {
+            mbox($.t("taskAdd.min_credit_limit"));
+            return false;
+        }
+        else if(isNaN(parseInt($("#task_target_num").val()))||parseInt($("#task_target_num").val())<=0)
+        {
+            mbox($.t("taskAdd.min_target_num_limit"));
+            return false;
+        }
+        if ("Array"==typeof logic["logic_param"]) {
+            $(logic["logic_param"]).each(function (i, param) {
+                if (param.custom.toLowerCase() == "true") {
+                    logic["logic_param"][i]["value"] = $("input[name=" + param.key + "]").val();
+                }
+            });
+            //console.log(dumpObj(logic));
+        }
+
+        var logic_param =JSON.stringify(logic["logic_param"]);
+        var website = $("#website").val();
+        var logic = $("#logic").val();
+        var task_credit = $("#task_credit").val();
+        var task_target_num = $("#task_target_num").val();
+        var hours_limit=$("#hours_limit:checked").length>0?1:0;
+
+        var param = "website=" + website;
+        param += "&logic=" + logic;
+        param += "&task_credit=" + task_credit;
+        param += "&task_target_num=" + task_target_num;
+        param += "&logic_param=" + logic_param;
+        param += "&hours_limit=" + hours_limit;
+
+        for(var i=0;i<24;i++)
+        {
+            param += "&task_h_"+i+"=" + $("input[name=task_h_"+i+"]").val();
+        }
+
+        jsonp("task/publish.php?" + param,function (data) {
+            if(data.result==undefined)
+            {
+                $(grid_selector).trigger("reloadGrid");
+                hidePbox();
+            }
+            mbox(data.msg);
+        });
+    };*/
+</script>

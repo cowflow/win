@@ -1,0 +1,115 @@
+<div class="row" id="test-content">
+    <div class="col-xs-12">
+
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="website" data-i18n="accountAdd.platform"></label>
+
+            <div class="col-sm-9">
+                <select id="website" class="col-xs-10 col-sm-5">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="username" data-i18n="accountAdd.isBatchInsert"></label>
+
+            <div class="col-sm-9">
+              <input id="isBatchInsert" name="isBatchInsert" class="ace ace-switch ace-switch-6" type="checkbox" onclick="setInsert()">
+            <span class="lbl"></span>
+            </div>
+        </div>
+
+        <div class="form-group batch-insert" style="display:none">
+            <label class="col-sm-3 control-label no-padding-right" for="username" data-i18n="accountAdd.batchInsert"></label>
+
+            <div class="col-sm-9">
+               <a href="javascript:tbox('help.accountBatchInsertAnswer');">什么是批量添加?</a><br>
+              <textarea id="batchText" class="autosize-transition span12" style="overflow: hidden; word-wrap: break-word; height: 50px; margin: 0px; width: 237px;resize: none;"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group one-insert">
+            <label class="col-sm-3 control-label no-padding-right" for="username" data-i18n="accountAdd.username"></label>
+
+            <div class="col-sm-9">
+                <input id="username" type="text" placeholder="" class="col-xs-10 col-sm-5" data-i18n="accountAdd.usernameInput">
+            </div>
+        </div>
+
+        <div class="form-group one-insert">
+            <label class="col-sm-3 control-label no-padding-right" for="password" data-i18n="accountAdd.password"></label>
+
+            <div class="col-sm-9">
+                <input id="password" type="password" placeholder="" class="col-xs-10 col-sm-5" data-i18n="accountAdd.passwordInput">
+            </div>
+        </div>
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-6">
+                <button class="btn btn-info" type="button" onclick="addAccount();">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    <span data-i18n="operation.save"></span>
+                </button>
+
+            </div>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+  // jsonp("account/status_list.php",function (data) {
+  //     $(data).each(function(i,item){
+  //         if(0!=i && 3!=i) {
+  //             var option = $("<option>").val(i).text(item);
+  //             $('#sdf').append(option);
+  //         }
+  //     });
+  // });
+
+  jsonp("website/ls.php",function (data) {
+      $.each(data,function(i,item) {
+          var option = $("<option>").val(item["website_id"]).text(item["website_name"]);
+          $('#website').append(option);
+      });
+  });
+
+  function setInsert()
+  {
+      check = $('#isBatchInsert').prop('checked');
+      $('.batch-insert').hide();
+      $('.one-insert').hide();
+      if (check) {
+          $('.batch-insert').show();
+      } else {
+          $('.one-insert').show();
+      }
+  }
+
+  function addAccount()
+  {
+      var website   = $("#website").val();
+      var isBatch   = $("#isBatchInsert").prop('checked');
+      var username  = $("#username").val();
+      var password  = $("#password").val();
+      var batchText = $("#batchText").val();
+
+      var param = "website=" + website;
+      param += "&username=" + username;
+      param += "&password=" + password;
+      param += "&data=" + paramEncode(batchText);
+
+      var url = !isBatch ? "account/add.php" : "account/batch_insert.php";
+      url += "?" + param;
+
+      jsonp(url,function (data) {
+          $(grid_selector).trigger("reloadGrid");
+          mbox(data.msg);
+          hidePbox();
+      });
+  }
+</script>

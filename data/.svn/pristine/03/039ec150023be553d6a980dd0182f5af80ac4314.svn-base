@@ -1,0 +1,1 @@
+<div class="page-content" id="page_content"></div><script type="text/javascript">function displayCode(){var e=getCodeFile(),o="";$.each(e,function(e){var t=readCodeType(e);t.id&&(o+="<button onclick=\"mCodeName='"+e+"';pbox('code_"+t.type+"');\">类别:"+t.type+" 用户:"+t.id+"</button><br>")}),$("#page_content").html(o)}displayCode();</script>

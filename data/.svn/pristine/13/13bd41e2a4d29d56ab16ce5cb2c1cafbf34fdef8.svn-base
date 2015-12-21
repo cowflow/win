@@ -1,0 +1,430 @@
+<div class="row" id="test-content">
+    <div class="col-xs-12">
+        <label class="col-sm-12 control-label no-padding-right"  data-i18n="taskAdd.title"></label>
+    <form class="form-horizontal" role="form" class="task">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="website" data-i18n="taskAdd.platform"></label>
+
+            <div class="col-sm-9">
+                <select id="website" class="col-xs-10 col-sm-5">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="logic" data-i18n="taskAdd.taskName"></label>
+
+            <div class="col-sm-9">
+                <select id="logic" class="col-xs-10 col-sm-5">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" id="task_target">
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="task_credit" data-i18n="taskAdd.taskCredit"></label>
+
+            <div class="col-sm-9">
+                <input id="task_credit" type="number" min="0" placeholder="" class="col-xs-10 col-sm-5" data-i18n="taskAdd.taskCreditInput">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="task_target_num" data-i18n="taskAdd.taskTargetNum"></label>
+
+            <div class="col-sm-9">
+                <input id="task_target_num" type="number" min="0" placeholder="" class="col-xs-10 col-sm-5" data-i18n="taskAdd.taskTargetNumInput">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" data-i18n="taskAdd.hoursLimit"></label>
+
+            <div class="col-sm-9">
+                <label>
+                    <input id="hours_limit" name="hours_limit" class="ace ace-switch ace-switch-7" type="checkbox">
+                    <span class="lbl"></span>
+                </label>
+            </div>
+
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit0"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_0" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit1"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_1" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit2"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_2" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit3"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_3" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit4"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_4" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit5"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_5" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit6"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_6" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit7"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_7" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit8"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_8" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit9"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_9" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit10"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_10" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit11"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_11" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit12"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_12" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit13"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_13" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit14"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_14" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit15"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_15" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit16"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_16" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit17"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_17" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit18"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_18" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit19"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_19" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit20"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_20" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit21"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_21" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit22"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_22" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+            <div class="col-sm-12 hours_limit">
+                <label class="col-sm-3 control-label" data-i18n="taskAdd.hoursLimit23"></label>
+                <input class="col-sm-2 " type="number" min="1" name="task_h_23" value="1" >
+                <div class="col-sm-1 " ></div><div class="col-sm-6 input-size-slider" >
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-6">
+                <button class="btn btn-info" type="button" onclick="addTask();">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    <span data-i18n="operation.save"></span>
+                </button>
+            </div>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+<textarea id="templateGroupSelect" style="display:none">
+
+  <option value="0" data-i18n="operation.default"></option>
+  {{#data}}
+  <option value="{{group_id}}">{{group_name}}</option>
+  {{/data}}
+
+</textarea>
+
+
+<style>
+    #task_target > div{
+        padding-left:0px; padding-right:0px;}
+</style>
+
+<script type="text/javascript">
+
+    $(function(){
+        $(".hours_limit").hide();
+        $("#hours_limit").on("change",function(){
+            var $this=$("#hours_limit");
+            if(!($("#task_target_num").val()>0))
+            {
+                $this.removeAttr("checked");
+                $(".hours_limit").hide();
+                return ;
+            }
+            if(!$this.attr("checked"))
+            {
+                $this.attr("checked","checked");
+                $(".hours_limit").show();
+            }
+            else
+            {
+                $this.removeAttr("checked");
+                $(".hours_limit").hide();
+            }
+        });
+        $("#task_target_num").on("change",function(){
+            var $this=$(this);
+            if(!($this.val()>0))
+            {
+                $this.removeAttr("checked");
+                $(".hours_limit").hide();
+                return ;
+            }
+/*            $('.input-size-slider').each(function(i,item){
+                $(item).slider('max', $this.val());
+                if($(item).slider('value')>$this.val())
+                    $(item).slider('value',$this.val());
+            });*/
+            $(".input-size-slider").slider({
+                max: $this.val()
+            });
+        });
+        $(".input-size-slider").slider({
+            value:1,
+            range: "min",
+            min: 1,
+            max: 100,
+            step: 1,
+            slide: function( event, ui ) {
+                var $this=$(this);
+                var val = parseInt(ui.value);
+                $this.parent().find("input[type=number]").val(val);
+            }
+        });
+    });
+
+
+    var tmp_logic_data = [];
+    var tmp_logic_index=null;
+    $("#logic").attr("disabled","disabled");
+    jsonp("website/ls.php", function (data) {
+        $("#website").unbind("change");
+        var option = $("<option>").val("").text(t('taskAdd.pleaseSelect'));
+        $('#website').append(option);
+        $.each(data, function (i, item) {
+            if (item['website_id'] == '' || item['website_name'] == '') return;
+            option = $("<option>").val(item["website_id"]).text(item["website_name"]);
+            $('#website').append(option);
+        });
+        $("#website").bind("change",function(){
+            $("#logic").removeAttr("disabled");
+            loadLogic($(this).val());});
+    });
+
+    $("body").delegate("#logic","change", function () {
+        var $this=$(this);
+        $(tmp_logic_data).each(function(i,item){
+            if(item["logic_id"]==$this.val())
+            {
+                tmp_logic_index=i;
+                $("#task_target").html("");
+                $(item["logic_param"]).each(function(i,param){
+
+                    if(param.custom.toLowerCase()=="true") {
+                        var tmp_input_html = '<input type="text" id="' + param.key + '" value="' + param.value + '" />';
+                        if (param.key == 'template_group') {
+                            tmp_input_html = "<select id='" + param.key + "'></select>";
+                        }
+                        var tmp_html = '<div class="col-sm-12">' +
+                                '<div class="col-sm-3 control-label no-padding-right">' + param.text +
+                                ':</div>' +
+                                '<div class="col-sm-9">' +
+                                tmp_input_html +
+                        '</div></div>';
+                        $("#task_target").append(tmp_html);
+
+                        if (param.key == 'template_group') {
+                            jsonm("template/group_cache.php","#templateGroupSelect","#template_group");
+                        }
+                    }
+                });
+
+                $("#task_credit").val(item["logic_credit"]);
+                $("#task_target_num").val(item["logic_param"]);
+                return ;
+            }
+        });
+
+    });
+
+    function loadLogic(website) {
+        $("#task_target").empty();
+        if(website) {
+            $("#logic").empty();
+
+            jsonp("task/logic.php?website=" + website, function (logic_data) {
+                tmp_logic_data = logic_data["rows"];
+                var option = $("<option>").val("").text(t('taskAdd.pleaseSelect'));
+                $('#logic').append(option);
+                $.each(tmp_logic_data, function (i, item) {
+                    option = $("<option>").val(item["logic_id"]).text(item["logic_name"]);
+                    $("#logic").append(option);
+                    //$("#task_target").val(item["logic_param"]);
+                });
+            });
+        }
+    }
+
+    function addTask() {
+
+        if($("#website").val().length<=0)
+        {
+            mbox($.t("taskAdd.pleaseSelectWebsite"));
+            return false;
+        }
+        else if(tmp_logic_data.length<=0)
+        {
+            mbox($.t("taskAdd.logicDataEmpty"));
+            return false;
+        }
+        else if($("#logic").val().length<=0)
+        {
+            mbox($.t("taskAdd.pleaseSelectLogic"));
+            return false;
+        }
+        var logic = tmp_logic_data[tmp_logic_index];
+
+        if(isNaN(parseInt($("#task_credit").val()))||parseInt($("#task_credit").val())<parseInt(logic["logic_credit"]))
+        {
+            mbox($.t("taskAdd.minCreditLimit"));
+            return false;
+        }
+        else if(isNaN(parseInt($("#task_target_num").val()))||parseInt($("#task_target_num").val())<=0)
+        {
+            mbox($.t("taskAdd.minTargetNumLimit"));
+            return false;
+        }
+
+/*
+        $(logic["logic_param"]).each(function (i, param) {
+            dump(i);
+            dump(param);
+        });
+*/
+/*        dump(logic["logic_param"]);
+        dump(typeof logic["logic_param"]);*/
+
+        if ("object"==typeof logic["logic_param"]) {
+            $(logic["logic_param"]).each(function (i, param) {
+                if (param.custom.toLowerCase() == "true") {
+                    logic["logic_param"][i]["value"] = $("#" + param.key).val();
+                }
+            });
+        }
+
+        var logic_param =JSON.stringify(logic["logic_param"]);
+        var website = $("#website").val();
+        var logic = $("#logic").val();
+        var task_credit = $("#task_credit").val();
+        var task_target_num = $("#task_target_num").val();
+        var hours_limit=$("#hours_limit:checked").length>0?1:0;
+
+        dump(logic_param);
+        var param = "website=" + website;
+        param += "&logic=" + logic;
+        param += "&task_credit=" + task_credit;
+        param += "&task_target_num=" + task_target_num;
+        param += "&logic_param=" + paramEncode(logic_param);
+        param += "&hours_limit=" + hours_limit;
+
+        for(var i=0;i<24;i++)
+        {
+            param += "&task_h_"+i+"=" + $("input[name=task_h_"+i+"]").val();
+        }
+
+        jsonp("task/publish.php?" + param,function (data) {
+            if(data.result==undefined)
+            {
+                $(grid_selector).trigger("reloadGrid");
+                hidePbox();
+            }
+            mbox(data.msg);
+        });
+    };
+</script>

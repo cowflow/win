@@ -1,0 +1,18 @@
+<div class="page-content"><div class="row"><div class="col-xs-12" style="height:390px"><table class="table table-striped table-bordered table-hover"><thead><tr><th class="center"><input type="checkbox" class="ace par"><span class="lbl"></span></th><th data-i18n="account.platform"></th><th data-i18n="account.accountName"></th><th data-i18n="account.status"></th></tr></thead><tbody id="table"></tbody></table></div><div class="col-xs-6"><div class="dataTables_info" id="dynamic-table_info" role="status" aria-live="polite"><button data-i18n="[title]operation.add" class="btn btn-white btn-primary btn-bold" onclick="buttonAdd()"><span><i class="ace-icon fa fa-plus-circle bigger-120 primary"></i></span></button> <button data-i18n="[title]operation.edit" class="btn btn-white btn-purple btn-bold" onclick="buttonEdit()"><span><i class="ace-icon fa fa-edit bigger-120 purple"></i></span></button> <button data-i18n="[title]operation.enable" class="btn btn-white btn-blue btn-bold" onclick="buttonEnable()"><span><i class="ace-icon fa fa-play bigger-120 blue"></i></span></button> <button data-i18n="[title]operation.search" class="btn btn-white btn-yellow btn-bold" onclick="buttonSearch()"><span><i class="ace-icon fa fa-search bigger-120 yellow"></i></span></button> <button data-i18n="[title]operation.delete" class="btn btn-white btn-warning btn-bold" onclick="buttonRemove()"><span><i class="ace-icon fa fa-trash-o bigger-120 warning"></i></span></button></div></div><div class="col-xs-6"><div class="dataTables_paginate paging_simple_numbers" id="tablePage"></div></div></div></div><textarea id="templateTable" style="display:none">
+
+  {{#empty}}
+  <tr>
+    <td align="center" colspan="4" data-i18n="message.emptyRecord"></td>
+  </tr>
+  {{/empty}}
+
+  {{#data}}
+  <tr>
+    <td class="center"><input value="{{account_id}}" type="checkbox" class="ace sub"><span class="lbl"></span></td>
+    <td>{{platform}}</td>
+    <td>{{account_name}}</td>
+    <td>{{status}}</td>
+  </tr>
+  {{/data}}
+
+</textarea><script type="text/javascript">function loadTable(o){nowPage=o?o:nowPage,jsonm("account/index.php"+nowPage,"#templateTable","#table")}function buttonAdd(){pbox("account_add")}function buttonEdit(){checkMID()&&pbox("account_edit")}function buttonSearch(){pbox("account_search")}function buttonRemove(){checkMID()&&mconfirm(t("message.remove"),function(){jsonp("account/del.php?id="+mIDBox,function(o){mbox(o.msg),loadTable()})})}function buttonEnable(){checkMID()&&jsonp("account/enable.php?id="+mIDBox,function(o){mbox(o.msg),loadTable()})}loadTable();</script>

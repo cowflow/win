@@ -1,0 +1,102 @@
+<div class="page-content" >
+    <div class="row">
+        <div class="col-xs-12">
+
+            <br> <br>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="email" data-i18n="userEdit.email"></label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="email" value="" readonly="true" class="col-xs-10 col-sm-5" data-i18n="[placeholder]userEdit.emailInput">
+                    </div>
+                </div>
+
+                <!-- <div class="form-group"> -->
+                <!--     <label class="col-sm-3 control-label no-padding-right" for="nickname" data-i18n="userEdit.nickname"></label> -->
+
+                <!--     <div class="col-sm-9"> -->
+                <!--         <input type="text" id="nickname" placeholder="" class="col-xs-10 col-sm-5" data-i18n="[placeholder]userEdit.nicknameInput"> -->
+                <!--     </div> -->
+                <!-- </div> -->
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="sex" data-i18n="userEdit.sex"></label>
+
+                    <div class="col-sm-9">
+                        <select class="col-xs-10 col-sm-5" id="sex">
+                            <option value="0" data-i18n="userEdit.secret"></option>
+                            <option value="1" data-i18n="userEdit.male"></option>
+                            <option value="2" data-i18n="userEdit.female"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group"> -->
+                <!--     <label class="col-sm-3 control-label no-padding-right" for="mobile" data-i18n="userEdit.mobile"></label> -->
+
+                <!--     <div class="col-sm-9"> -->
+                <!--         <input type="text" id="mobile" placeholder="" class="col-xs-10 col-sm-5" data-i18n="[placeholder]userEdit.mobileInput"> -->
+                <!--     </div> -->
+                <!-- </div> -->
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="im" data-i18n="userEdit.im"></label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="im" placeholder="" class="col-xs-10 col-sm-5" data-i18n="[placeholder]userEdit.imInput">
+                    </div>
+                </div>
+
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-6">
+                        <button class="btn btn-info" type="button" onclick="userEdit()">
+                          <i class="ace-icon fa fa-check bigger-110"></i>
+                          <span data-i18n="operation.save"></span>
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+    jsonp("user/userinfo.php",function(data){
+        $("#email").val(data.user.email);
+        $("#sex").val(data.user.sex);
+        $("#im").val(data.user.im);
+    });
+});
+
+function buttonSubmit()
+{
+    userEdit();
+}
+
+function userEdit()
+{
+    var param = "";// "nickname=" + $("#nickname").val() + "&";
+    param += "sex=" + $("#sex").val() + "&";
+    param += "im=" + $("#im").val();
+    // param += "mobile=" + $("#mobile").val() + "&";
+
+    jsonp("user/edit.php?" + param,function(data){
+        if(data.result != 1)
+        {
+            mbox(data.msg);
+            return;
+        }
+
+        mbox(data.msg);
+    });
+}
+
+</script>

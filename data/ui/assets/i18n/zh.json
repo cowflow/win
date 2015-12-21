@@ -1,0 +1,266 @@
+{
+    "app": {
+        "name": "牛量"
+    },
+    "message": {
+        "tip": "提示",
+        "credit": "积分",
+        "networkError": "网络错误，请稍等一会儿再尝试",
+        "templateError": "模板调用错误,多次出现,请去网站下载最新版本",
+        "templatePageError": "模板分页调用错误,多次出现,请去网站下载最新版本",
+        "saveDone": "保存成功！",
+        "remove": "确认删除?",
+        "emptyRecord": "此处还没有任何纪录~",
+        "noCode":"暂无验证码需要验证",
+        "prevIntro":"上一页",
+        "nextIntro":"下一页",
+        "skipIntro":"跳过",
+        "doneIntro":"完成"
+    },
+    "tips": {
+        "mainFirst":"欢迎您使用牛量,接下来我会引导你如何使用此软件.",
+        "mainIndex":"运行状态将会告诉你软件当前运行的状态,以及你的常用统计",
+        "mainTask":"使用你的积分发布互刷任务.",
+        "mainAccount":"添加你的小号让软件帮你自动赚取积分.",
+        "mainTemplate":"定制你自己的评论内容.",
+        "mainUser":"注册用户,切换用户,新手尽快注册用户哦~",
+        "codeBell":"小号登录的时候需要点击此处来输入验证码."
+    },
+    "main": {
+        "welcome": "欢迎,",
+        "anonymous": "匿名用户",
+        "newbie": "请尽快<a href='_main.html?parent=user&child=user_register'>注册</a>用户，以免数据丢失！"
+    },
+    "menu": {
+        "index": "运行状态",
+        "task": "我的任务",
+        "template": "模板管理",
+        "templateTemplate": "模板",
+        "templateGroup": "模板组",
+        "account": "我的小号",
+        "user": "用户中心",
+        "userMessage": "系统消息",
+        "userEdit": "资料修改",
+        "userInfo": "用户信息",
+        "userPassword": "修改密码",
+        "userLogin": "切换用户",
+        "userRegister": "用户注册",
+        "setting": "偏好设置",
+        "help": "帮助"
+    },
+    "operation":
+    {
+        "add":"添加",
+        "edit":"编辑",
+        "update":"更新",
+        "save":"保存",
+        "delete":"删除",
+        "search":"查询",
+        "submit":"提交",
+        "pleaseSelectRow":"请选择行",
+        "noChange":"没有任何改变",
+        "sureToDelete":"确定要删除",
+        "refresh":"刷新",
+        "search":"查询",
+        "prev":"上一页",
+        "next":"下一页",
+        "default":"默认",
+        "all":"所有",
+        "enable":"启用"
+    },
+    "nav": {
+        "home": "首页",
+        "page1": "Page One",
+        "page2": "Page Two"
+    },
+    "index": {
+        "group0" : "普通",
+        "group1" : "VIP",
+        "group3" : "特殊用户",
+        "loading" : "...",
+        "currentCredit" : "当前积分",
+        "userGroup" : "用户类别",
+        "userLevel" : "用户级别",
+        "serverTimes" : "服务器响应",
+        "successTimes" : "任务成功次数",
+        "failedTimes" : "任务失败次数",
+        "runStatus": "运行状态",
+        "pointFormat": "<b>当前小时:{point.y:.1f}</b>"
+    },
+    "task": {
+        "myTask": "我的任务",
+        "ID": "编号",
+        "platform":"平台",
+        "logicName": "模块",
+        "logicFunc": "模块方法",
+        "target":"配置参数",
+        "targetContent":"目标内容",
+        "credit":"单次积分",
+        "targetNum": "目标数量",
+        "currentNum":"已完成数",
+        "startTime":"发布时间",
+        "touchTime":"触发时间",
+        "completeTime":"完成时间",
+        "status":"状态"
+    },
+    "taskAdd":{
+        "title":"添加任务",
+        "editTitle":"编辑任务",
+        "platform":"平台",
+        "taskName": "任务",
+        "pleaseSelect": "请选择...",
+        "taskCredit":"单次提供积分",
+        "taskCreditInput":"请输入完成单次任务后可获得的积分",
+        "taskTargetNum":"总次数",
+        "taskTargetNumInput":"请输入需要完成该任务的总次数",
+        "taskTarget":"配置参数",
+        "hoursLimit":"小时次数限制",
+        "hoursLimit0":" 第0小时次数限制",
+        "hoursLimit1":" 第1小时次数限制",
+        "hoursLimit2":" 第2小时次数限制",
+        "hoursLimit3":" 第3小时次数限制",
+        "hoursLimit4":" 第4小时次数限制",
+        "hoursLimit5":" 第5小时次数限制",
+        "hoursLimit6":" 第6小时次数限制",
+        "hoursLimit7":" 第7小时次数限制",
+        "hoursLimit8":" 第8小时次数限制",
+        "hoursLimit9":" 第9小时次数限制",
+        "hoursLimit10":" 第10小时次数限制",
+        "hoursLimit11":" 第11小时次数限制",
+        "hoursLimit12":" 第12小时次数限制",
+        "hoursLimit13":" 第13小时次数限制",
+        "hoursLimit14":" 第14小时次数限制",
+        "hoursLimit15":" 第15小时次数限制",
+        "hoursLimit16":" 第16小时次数限制",
+        "hoursLimit17":" 第17小时次数限制",
+        "hoursLimit18":" 第18小时次数限制",
+        "hoursLimit19":" 第19小时次数限制",
+        "hoursLimit20":" 第20小时次数限制",
+        "hoursLimit21":" 第21小时次数限制",
+        "hoursLimit22":" 第22小时次数限制",
+        "hoursLimit23":" 第23小时次数限制",
+        "pleaseSelectWebsite":"请选择任务平台",
+        "logicDataEmpty":"任务逻辑模块列表为空，请与管理员联系",
+        "pleaseSelectLogic":"请选择任务逻辑模块",
+        "minCreditLimit":"最小积分限制",
+        "minTargetNumLimit":"最小任务次数限制"
+    },
+    "taskSearch":{
+        "title":"查询条件"
+    },
+    "account": {
+        "myAccount": "我的小号",
+        "ID": "编号",
+        "accountName": "帐号",
+        "accountPassword": "密码",
+        "platform": "平台",
+        "credit": "今日积分",
+        "status": "状态",
+        "accountNone" : "无状态",
+        "accountNormal" : "正常",
+        "accountPasswordError" : "密码错误",
+        "accountAbnormal" : "帐号异常",
+        "accountDisabled" : "帐号禁用",
+        "accountShare" : "共享帐号",
+        "accountTooManyCode" : "验证码错误"
+    },
+    "accountAdd":{
+        "status":"状态",
+        "platform":"平台",
+        "username":"用户名",
+        "password":"密码",
+        "usernameInput":"请输入用户名",
+        "passwordInput":"请输入用户密码",
+        "isBatchInsert":"是否批量",
+        "batchInsert":"批量加入"
+    },
+    "userLogin":{
+        "username":"邮箱：",
+        "password":"密码：",
+        "password2":"重复密码：",
+        "password2Input":"请重复输入密码",
+        "password2IsError":"重复输入密码不相同",
+        "usernameInput":"请输入邮箱",
+        "passwordInput":"请输入密码",
+        "submit":"登录",
+        "register":"注册",
+        "loginDone":"登录成功！",
+        "userCodeError":"验证码错误"
+    },
+    "userPassword":{
+        "newPasswordEmpty":"新输入的密码不能为空",
+        "newPasswordError":"新输入的密码两次不相等，请重新输入",
+        "oldPassword":"旧密码：",
+        "newPassword1":"新密码：",
+        "newPassword2":"重复新密码：",
+        "oldPasswordInput":"请输入旧密码",
+        "newPassword1Input":"请输入新密码",
+        "newPassword2Input":"请输入重复新密码"
+    },
+
+    "userEdit":{
+        "secret":"保密",
+        "email":"E-mail：",
+        "emailInput":"",
+        "nickname":"昵称：",
+        "nicknameInput":"请输入昵称",
+        "sex":"性别：",
+        "sexSecret":"保密",
+        "male":"男",
+        "female":"女",
+        "mobile":"手机：",
+        "mobileInput":"请输入手机",
+        "im":"QQ：",
+        "imInput":"请输入QQ号码"
+    },
+
+    "setting":{
+        "setLanguage":"设置语言版本：",
+        "en":"English",
+        "zh":"中文",
+        "openStart":"是否开机启动：",
+        "openFailed":"设置开机启动失败！注册表无法修改或者操作系统不支持。",
+        "useCode":"自动验证："
+    },
+
+    "code":{
+        "picture":" 图片： ",
+        "code":" 验证码： "
+    },
+
+    "template":{
+        "new":"新增模板",
+        "group":"模板组编号",
+        "content":"模板内容",
+        "remove":"删除模板",
+        "newGroup":"新增模板组",
+        "groupContent":"模板组名字",
+        "groupName":"模板组名字"
+    },
+
+    "help":{
+        "common":"常见",
+        "account":"帐号",
+        "pay":"支付",
+        "commonQuestion":"常见问题",
+        "accountQuestion":"帐号问题",
+        "payQuestion":"支付问题",
+
+        "whatIsAnonymous":"什么是匿名用户？",
+        "whatIsAnonymousAnswer":"第一次打开软件都将会是匿名用户，这时候帐号的数据都只是临时保存。如果希望长期保存自己的小号，以及积分就必须注册用户。请点击左边的菜单 '用户中心-用户注册' ",
+
+        "whatIsCode":"什么是验证码？",
+        "whatIsCodeAnswer":"每当有小号登录各大平台，如果有验证码需要输入，将会弹出窗口输入。如果没有在限定的时间输入完毕，将会导致小号无法完成任务。",
+
+        "accountCanNotLogin":"帐号无法登录?",
+        "accountCanNotLoginAnswer":"当出现帐号无法登录的情况，请点击右边的菜单 '用户中心-用户登录' 尝试手动输入帐号登录。如果还无法登录，请尝试找回密码",
+
+        "accountBatchInsert":"如何批量添加?",
+        "accountBatchInsertAnswer":"一行代表一个帐号,帐号与密码之间的分隔可以使用下列符号分隔 帐号-密码 帐号|密码 帐号:密码 同时也支持重复性,比如 帐号---密码 帐号|||密码 帐号:::密码 这样,所以在密码中如果这些 - | : 的字符,就要注意了,可能会导致小号登录的失败",
+
+        "payDone":"金额支付成功",
+        "payDoneAnswer":"每当支付成功的时候，从支付平台到本平台会有一点延迟，请稍等几分钟再查看平台积分。如果超过半小时没有到帐号，请联系客户。"
+
+
+    }
+}

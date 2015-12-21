@@ -1,0 +1,13 @@
+Set ws = CreateObject("Wscript.Shell")
+
+wscript.sleep 3000
+
+ws.run "cmd /c " + wscript.arguments(0) + "update/svn.exe cleanup " + wscript.arguments(0),vbhide,true
+ws.run "cmd /c " + wscript.arguments(0) + "update/svn.exe revert -R " + wscript.arguments(0),vbhide,true
+ws.run "cmd /c " + wscript.arguments(0) + "update/svn.exe up --accept theirs-full " + wscript.arguments(0),vbhide,true
+
+ws.run "cmd /c " + wscript.arguments(0) + "update/svn.exe cleanup " + wscript.arguments(0) + "data/",vbhide,true
+ws.run "cmd /c " + wscript.arguments(0) + "update/svn.exe revert -R " + wscript.arguments(0) + "data/",vbhide,true
+ws.run "cmd /c " + wscript.arguments(0) + "update/svn.exe up --accept theirs-full " + wscript.arguments(0) + "data/",vbhide,true
+
+ws.run "cmd /c "+wscript.arguments(0)+"Cowflow.exe",vbhide

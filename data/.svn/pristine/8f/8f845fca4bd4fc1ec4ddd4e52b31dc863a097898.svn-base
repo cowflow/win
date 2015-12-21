@@ -1,0 +1,108 @@
+{
+    "app": {
+        "name": "Cowflow"
+    },
+    "message": {
+        "tip": "提示",
+        "credit": "积分",
+        "networkError": "网络错误，请稍等一会儿再尝试",
+        "save": "保存"
+    },
+    "main": {
+        "welcome": "欢迎,",
+        "anonymous": "匿名用户",
+        "newbie": "请尽快注册用户，以免数据丢失！"
+    },
+    "menu": {
+        "index": "运行状态",
+        "task": "我的任务",
+        "account": "我的小号",
+        "user": "用户中心",
+        "setting": "偏好设置",
+        "help": "帮助",
+        "user_message": "系统消息",
+        "user_edit": "资料修改",
+        "user_password": "修改密码",
+        "user_login": "用户登录",
+        "user_register": "用户注册"
+    },
+    "operation":
+    {
+        "add":"添加",
+        "edit":"编辑",
+        "update":"更新",
+        "save":"保存",
+        "delete":"删除",
+        "search":"查询"
+    },
+    "nav": {
+        "home": "首页",
+        "page1": "Page One",
+        "page2": "Page Two"
+    },
+    "index": {
+        "runStatus": "运行状态",
+        "pointFormat": "<b>当前小时:{point.y:.1f}</b>"
+    },
+    "task": {
+        "myTask": "我的任务",
+        "ID": "编号",
+        "platform": "平台",
+        "address": "地址",
+        "publish_times": "数量",
+        "publish_time_format": "时间"
+    },
+    "account": {
+        "myAccount": "我的小号",
+        "ID": "编号",
+        "account_name": "帐号",
+        "account_password": "密码",
+        "platform": "平台",
+        "credit": "今日积分",
+        "status": "状态"
+    },
+    "accountAdd":{
+        "status":"状态",
+        "platform":"平台",
+        "username":"用户名",
+        "password":"密码",
+        "username_input":"请输入用户名",
+        "password_input":"请输入用户密码"
+    },
+    "userLogin":{
+        "username":"邮箱：",
+        "password":"密码：",
+        "password2":"重复密码：",
+        "password2Input":"请重复输入密码",
+        "password2IsError":"重复输入密码不相同",
+        "usernameInput":"请输入邮箱",
+        "passwordInput":"请输入密码",
+        "submit":"登录",
+        "register":"注册",
+        "loginDone":"登录成功！",
+        "userCodeError":"验证码错误"
+    },
+    "userPassword":{
+        "newPasswordEmpty":"新输入的密码不能为空",
+        "newPasswordError":"新输入的密码两次不相等，请重新输入",
+        "oldPassword":"旧密码：",
+        "newPassword1":"新密码：",
+        "newPassword2":"重复新密码：",
+        "oldPasswordInput":"请输入旧密码",
+        "newPassword1Input":"请输入新密码",
+        "newPassword2Input":"请输入重复新密码"
+    },
+    "userEdit":{
+        "email":"E-mail：",
+        "emailInput":"",
+        "nickname":"昵称：",
+        "nicknameInput":"请输入昵称",
+        "sex":"性别：",
+        "male":"男",
+        "female":"女",
+        "mobile":"手机：",
+        "mobileInput":"请输入手机",
+        "im":"QQ：",
+        "imInput":"请输入QQ号码"
+    }
+}

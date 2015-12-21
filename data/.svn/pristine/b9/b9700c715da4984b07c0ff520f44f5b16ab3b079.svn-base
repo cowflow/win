@@ -1,0 +1,237 @@
+<div class="page-content" >
+  <div class="row">
+
+
+    <div class="col-xs-12" style="height:390px">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="center"><input type="checkbox" class="ace par"><span class="lbl"></span></th>
+            <th data-i18n="account.platform"></th>
+            <th data-i18n="account.accountName"></th>
+            <th data-i18n="account.status"></th>
+          </tr>
+        </thead>
+        <tbody id="table">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="dataTables_info" id="dynamic-table_info" role="status" aria-live="polite">
+
+        <button data-i18n="[title]operation.add" class="btn btn-white btn-primary btn-bold" onclick="buttonAdd();">
+          <span><i class="ace-icon fa fa-plus-circle bigger-120 primary"></i></span>
+        </button>
+
+        <button data-i18n="[title]operation.edit" class="btn btn-white btn-purple btn-bold" onclick="buttonEdit();">
+          <span><i class="ace-icon fa fa-edit bigger-120 purple"></i></span>
+        </button>
+
+
+        <button data-i18n="[title]operation.search" class="btn btn-white btn-yellow btn-bold" onclick="buttonSearch();">
+          <span><i class="ace-icon fa fa-search bigger-120 yellow"></i></span>
+        </button>
+
+        <button data-i18n="[title]operation.delete" class="btn btn-white btn-warning btn-bold" onclick="buttonRemove();">
+          <span><i class="ace-icon fa fa-trash-o bigger-120 warning"></i></span>
+        </button>
+
+      </div>
+    </div>
+
+
+    <div class="col-xs-6">
+      <div class="dataTables_paginate paging_simple_numbers" id="tablePage">
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<textarea id="templateTable" style="display:none">
+
+  {{#empty}}
+  <tr>
+    <td align="center" colspan="4" data-i18n="message.emptyRecord"></td>
+  </tr>
+  {{/empty}}
+
+  {{#data}}
+  <tr>
+    <td class="center"><input value="{{account_id}}" type="checkbox" class="ace sub"><span class="lbl"></span></td>
+    <td>{{platform}}</td>
+    <td>{{account_name}}</td>
+    <td>{{status}}</td>
+  </tr>
+  {{/data}}
+
+</textarea>
+
+<script type="text/javascript">
+
+      loadTable();
+
+      function loadTable(page)
+      {
+          nowPage = page ? page : nowPage;
+          jsonm("account/index.php" + nowPage,"#templateTable","#table");
+      }
+
+      function buttonAdd()
+      {
+          pbox("account_add");
+      }
+
+      function buttonEdit()
+      {
+          if (!checkMID()) {
+              return;
+          }
+          pbox("account_edit");
+      }
+
+      function buttonSearch()
+      {
+          pbox("account_search");
+      }
+
+      function buttonRemove()
+      {
+          if (!checkMID()) {
+              return;
+          }
+          mconfirm(t("message.remove"),function(){
+              jsonp("account/del.php?id=" + mID, function (data) {
+                  $(grid_selector).trigger("reloadGrid");
+                  mbox(data.msg);
+                  loadTable();
+              });
+          });
+      }
+</script>
+
+
+
+<!-- <div class="page-content" > -->
+<!--   <div class="row"> -->
+<!--     <div class="col-xs-12"> -->
+<!--       <table id="grid-table"></table> -->
+<!--       <div id="grid-pager"></div> -->
+
+<!--       <script type="text/javascript"> -->
+<!--         var $path_base = "..";//this will be used for editurl parameter -->
+<!--       </script> -->
+
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- <script type="text/javascript"> -->
+
+<!-- var colNameArray = [ -->
+<!--     /*"操作",*/ -->
+<!--     $.t("account.ID"), -->
+<!--     $.t("account.accountName"), -->
+<!--     // $.t("account.accountPassword"), -->
+<!--     $.t("account.platform"), -->
+<!--     // $.t("account.credit"), -->
+<!--     $.t("account.status") -->
+<!-- ]; -->
+<!-- var colModelArray = [ -->
+<!--     /*{name:'action', width:80,fixed:true, sortable:false, editable: false, formatter:'actions'},*/ -->
+<!--     {name:'account_id',index:'account_id', sortable:false, editable: false,hidden:true}, -->
+<!--     {name:'account_name',index:'account_name',sortable:false, editable:true}, -->
+<!--     // {name:'account_password',index:'account_password',sortable:false, editable:true}, -->
+<!--     {name:'platform',index:'platform',sortable:false, editable: true}, -->
+<!--     // {name:'account_credit',index:'account_credit',sortable:false, editable: false}, -->
+<!--     {name:'status',index:'status',sortable:false} -->
+<!-- ]; -->
+
+<!-- createJqGrid($.t("account.myAccount"),mServerUrl + "account/ls.php",colNameArray,colModelArray); -->
+
+<!-- jQuery(grid_selector) -->
+<!--         .navButtonAdd(pager_selector,{ -->
+<!--             title: $.t("operation.add"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-plus-circle purple", -->
+<!--             onClickButton: function(){ -->
+<!--                 pbox("account_add"); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         })/*.navButtonAdd(pager_selector,{ -->
+<!--             title:$.t("operation.save"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-save pink", -->
+<!--             onClickButton: function(){ -->
+<!--                 alert("search Row"); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         })*/.navButtonAdd(pager_selector,{ -->
+<!--             title:$.t("operation.edit"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-edit purple", -->
+<!--             onClickButton: function(){ -->
+<!--                 var row_index = getSelected(); -->
+<!--                 if(row_index) -->
+<!--                     row_index=row_index[row_index.length-1]; -->
+
+<!--                 var col_index=2; -->
+<!--                 var id = $(grid_selector).jqGrid('getCell',row_index,col_index); -->
+<!--                 if( id ) { -->
+<!--                     mParam.id=id; -->
+<!--                     pbox("account_edit"); -->
+<!--                 } -->
+<!--                 else alert($.t("operation.pleaseSelectRow")); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         })/*.navButtonAdd(pager_selector,{ -->
+<!--             title:$.t("operation.update"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-save green", -->
+<!--             onClickButton: function(){ -->
+<!--                 alert("search Row"); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         })*/.navButtonAdd(pager_selector,{ -->
+<!--             title:$.t("operation.delete"), -->
+<!--             caption:"", -->
+<!--             buttonicon:"ui-icon ace-icon fa fa-minus-circle red", -->
+<!--             onClickButton: function(){ -->
+<!--                 var row_index = getSelected(); -->
+<!--                 if(row_index) -->
+<!--                     row_index=row_index[row_index.length-1]; -->
+
+<!--                 var col_index=2; -->
+<!--                 var id = $(grid_selector).jqGrid('getCell',row_index,col_index); -->
+<!--                 if( id ) { -->
+<!--                     if(confirm($.t("operation.sure-to-delete"))) -->
+<!--                     { -->
+<!--                          jsonp("account/del.php?id=" + id, function (data) { -->
+<!--                             $(grid_selector).trigger("reloadGrid"); -->
+<!--                             mbox(data.msg); -->
+<!--                          }); -->
+<!--                     } -->
+<!--                 } -->
+<!--                 else alert($.t("operation.pleaseSelectRow")); -->
+<!--             }, -->
+<!--             position:"last" -->
+<!--         }).navButtonAdd(pager_selector, { -->
+<!--             title: $.t("operation.search"), -->
+<!--             caption: "", -->
+<!--             buttonicon: "ui-icon ace-icon fa fa-search orange", -->
+<!--             onClickButton: function () { -->
+<!--                 pbox("account_search"); -->
+<!--             }, -->
+<!--             position: "last" -->
+<!--         }).navButtonAdd(pager_selector, { -->
+<!--             title: $.t("operation.refresh"), -->
+<!--             caption: "", -->
+<!--             buttonicon: "ui-icon ace-icon fa fa-refresh green", -->
+<!--             onClickButton: function () { -->
+<!--                 $(grid_selector).trigger("reloadGrid"); -->
+<!--             }, -->
+<!--             position: "last" -->
+<!--         }); -->
+
+<!-- </script> -->

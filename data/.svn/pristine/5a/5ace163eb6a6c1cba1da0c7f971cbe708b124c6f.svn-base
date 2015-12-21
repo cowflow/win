@@ -1,0 +1,88 @@
+<div class="row" id="test-content">
+    <div class="col-xs-12">
+
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="website" data-i18n="accountAdd.platform"></label>
+
+            <div class="col-sm-9">
+                <select id="website" class="col-xs-10 col-sm-5" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="username" data-i18n="accountAdd.username"></label>
+
+            <div class="col-sm-9">
+                <input id="username" type="text" readonly="readonly" placeholder="" class="col-xs-10 col-sm-5" data-i18n="accountAdd.username_input">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="password" data-i18n="accountAdd.password"></label>
+
+            <div class="col-sm-9">
+                <input id="password" type="password" placeholder="" class="col-xs-10 col-sm-5" data-i18n="accountAdd.password_input">
+            </div>
+        </div>
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-6">
+                <button class="btn btn-info" type="button" onclick="updateAccount();">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    <span data-i18n="operation.save"></span>
+                </button>
+
+            </div>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var old_data={};
+    jsonp("website/ls.php",function (data) {
+        $.each(data, function (i, item) {
+            var option = $("<option>").val(item["website_id"]).text(item["website_name"]);
+            $('#website').append(option);
+        });
+    });
+
+    jsonp("account/view.php?id="+mID,function (data) {
+        old_data=data;
+        $("#website").val(data["info"]["account_website"]);
+        $("#username").val(data["info"]["account_name"]);
+    });
+
+
+    function updateAccount() {
+        var website = $("#website").val();
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        if(password=="") {
+            if (old_data["info"]["account_name"] == username && old_data["info"]["account_website"] == website) {
+                mbox($.t("operation.no-change"));
+                return false;
+            }
+            old_data["info"]["account_website"] = website;
+            old_data["info"]["account_name"] = username;
+        }
+        else
+            old_data["info"]["password"] = password;
+        var param = "id="+old_data["info"]["account_id"]+"&website=" + website;
+        param += "&username=" + username;
+        param += "&password=" + password;
+
+
+        jsonp("account/option.php?" + param, function (data) {
+            $(grid_selector).trigger("reloadGrid");
+            mbox(data.msg);
+            hidePbox();
+        });
+    }
+</script>

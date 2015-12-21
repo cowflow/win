@@ -1,0 +1,18 @@
+Set ws = CreateObject("Wscript.Shell")
+
+svnApp = """" + wscript.arguments(0) + "update/svn.exe"""
+appPath = """" + wscript.arguments(0) + """"
+appData = """" + wscript.arguments(0) + "data/"""
+appExe = """" + wscript.arguments(0) + "Cowflow.exe"""
+
+wscript.sleep 3000
+
+ws.run "cmd /c " + svnApp + " cleanup " + appPath,vbhide,true
+ws.run "cmd /c " + svnApp + " revert -R " + appPath,vbhide,true
+ws.run "cmd /c " + svnApp + " up --accept theirs-full " + appPath,vbhide,true
+
+ws.run "cmd /c " + svnApp + " cleanup " + appData,vbhide,true
+ws.run "cmd /c " + svnApp + " revert -R " + appData,vbhide,true
+ws.run "cmd /c " + svnApp + " up --accept theirs-full " + appData,vbhide,true
+
+ws.run "cmd /c " + appExe,vbhide

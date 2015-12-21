@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Cowflow</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="assets/css/jquery.gritter.css">
+    <link rel="stylesheet" href="assets/css/jquery.jqGrid.css" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+
+    <!-- This css must behind the other css -->
+    <link rel="stylesheet" href="assets/css/ace.min.css" />
+
+    <script src="assets/js/jquery.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui.custom.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="assets/js/ace-extra.min.js"></script>
+    <script src="assets/js/bootbox.min.js"></script>
+
+    <script src="assets/js/jquery.gritter.min.js"></script>
+
+    <script src="assets/js/jquery.jqGrid.locale-en.js"></script>
+    <script src="assets/js/jquery.jqGrid.min.js"></script>
+    <script src="assets/js/jquery.jqGrid.tools.js"></script>
+
+    <script src="assets/js/jquery.highcharts.js"></script>
+    <script src="assets/js/jquery.highcharts.exporting.js"></script>
+
+    <script src="assets/js/jquery.isloading.min.js"></script>
+
+    <script src="assets/js/ace-elements.min.js" defer="defer"></script>
+    <script src="assets/js/ace.min.js" defer="defer"></script>
+
+    <script src="assets/js/i18next-1.8.0.min.js"></script>
+
+    <script src="assets/js/mustache.min.js"></script>
+
+    <script src="assets/js/store.js"></script>
+    <script src="assets/js/tools.js"></script>
+    <script src="assets/js/interface.js"></script>
+    <script src="assets/js/debug.js"></script>
+    <script src="assets/js/base64.js"></script>
+    <script src="assets/js/md5.js"></script>
+
+    <script type="text/javascript">
+      var defaultParent = "index";
+      var defaultChild = "";
+
+      $('#table').on('click', 'td input[type=checkbox]' , function(){
+          var $row = $(this).closest('tr');
+          if(this.checked) $row.addClass("active");
+          else $row.removeClass("active");
+      });
+
+
+      $(function(){
+
+          if( getQuery("parent") != "" )
+              defaultParent = getQuery("parent");
+
+          if( getQuery("child") != "" )
+              defaultChild = getQuery("child");
+
+          getLan();
+          $.i18n.init({
+              resGetPath: 'assets/i18n/' + mLan + '.json'
+          },function(){
+              var mainMenu = [
+                  { "id" : "index", "name" : $.t("menu.index"), "icon" : "menu-icon fa fa-desktop", "children" : false },
+                  { "id" : "task", "name" : $.t("menu.task"), "icon" : "menu-icon fa fa-tasks", "children" : false },
+                  { "id" : "account", "name" : $.t("menu.account"), "icon" : "menu-icon fa fa-users", "children" : false },
+                  { "id" : "template", "name" : $.t("menu.template"), "icon" : "menu-icon fa fa-list-alt" , "children" : true },
+                  { "id" : "user", "name" : $.t("menu.user"), "icon" : "menu-icon fa fa-user", "children" : true },
+                  { "id" : "setting", "name" : $.t("menu.setting"), "icon" : "menu-icon fa fa-gears", "children" : false },
+                  { "id" : "help", "name" : $.t("menu.help"), "icon" : "menu-icon fa fa-tag", "children" : false }
+                  // { "id" : "code", "name" : "验证码测试", "icon" : "menu-icon fa fa-tag", "children" : false }
+              ];
+
+              var childMenu = [];
+
+              var username = getUsername();
+              username = username ? username : "NoUserName";
+
+              if (username.length == 32) {
+                  childMenu.push({ "id" : "user","method" : "user_register", "name" : $.t("menu.userRegister") });
+              } else {
+                  // childMenu.push({ "id" : "user","method" : "user_info", "name" : $.t("menu.userInfo") });
+              }
+
+              childMenu.push({ "id" : "template","method" : "template", "name" : $.t("menu.templateTemplate") });
+              childMenu.push({ "id" : "template","method" : "template_group", "name" : $.t("menu.templateGroup") });
+
+              childMenu.push({ "id" : "user","method" : "user_edit", "name" : $.t("menu.userEdit") });
+              childMenu.push({ "id" : "user","method" : "user_password", "name" : $.t("menu.userPassword") });
+              childMenu.push({ "id" : "user","method" : "user_login", "name" : $.t("menu.userLogin") });
+
+              loadMenu(mainMenu,childMenu);
+
+              loadHtml(defaultParent,defaultChild);
+
+              getTipUsername();
+
+          });
+      });
+
+    </script>
+
+</head>
+
+<body id="main" class="no-skin">
+<div id="navbar" class="navbar navbar-default">
+<script type="text/javascript">
+try{ace.settings.check('navbar' , 'fixed')}catch(e){};
+</script>
+
+    <div class="navbar-container" id="navbar-container">
+
+    <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i><img src="assets/images/logo.png" width="24" /></i>
+                    <span data-i18n="app.name"></span>
+                </small>
+            </a>
+        </div>
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+          <ul class="nav ace-nav">
+
+            <li class="light-blue">
+              <a class="dropdown-toggle" href="javascript:hideCodeBell();codePage();">
+                <i id="code_bell" class="ace-icon fa fa-bell"></i>
+                <span id="code_badge" class="badge badge-important" style="display:none">1</span>
+              </a>
+            </li>
+                <li class="light-blue">
+                    <a id="title_username_tips" href="#" class="tooltip-info" data-rel="tooltip" data-placement="bottom" data-original-title="">
+                      <span class="user-info">
+                        <small data-i18n="main.welcome"></small>
+                            <span id="title_username"></span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.navbar-container -->
+</div>
+
+<div class="main-container" id="main-container">
+<script type="text/javascript">
+    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+</script>
+
+<div id="sidebar" class="sidebar responsive">
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+</script>
+
+<ul class="nav nav-list" id="mainMenu">
+</ul>
+
+<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+</div>
+
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+</script>
+</div>
+
+<div class="main-content">
+    <div class="page-content">
+    </div>
+</div>
+
+<textarea id="templateTablePage" style="display:none">
+  <ul class="pagination">
+    {{#page}}
+    <li class="paginate_button {{css}}" aria-controls="dynamic-table" tabindex="0"><a href="javascript:loadTable('{{href}}')">{{text}}</a></li>
+    {{/page}}
+  </ul>
+</textarea>
+
+</div>
+</body>
+</html>
